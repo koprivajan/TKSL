@@ -1,0 +1,12 @@
+var
+	y;
+const
+	t0=0,
+	tmax=1,
+	dt=0.1,
+	eps=1e-20;
+	
+system
+Y'=1 &0;
+
+sysend.

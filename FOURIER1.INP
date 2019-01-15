@@ -1,0 +1,81 @@
+var y,z,u,v,x,f,f1,f2,a0,a1,a2,a3,a4,a5,a6,b0,b1,b2,b3,b4,b5,b6,vysl,
+ys1,ys2,ys3,ys5,yc1,yc3, v1,v2,v3,v4,v5;
+
+const PI=3.1415926535897932385,vomega=9,momega=1,m=0.5,om=1,dfi=2,dom=1,
+eps=1e-20,tmax=2*PI,k=1/PI;
+
+system
+{f=cos(t)*cos(t);}
+   {f=sin(t)*sin(t);}
+{f=3.5*sin(t);}
+
+{f=sin (t+0.5);}
+
+{f=3+5*cos(3*t)*sin(2*t)+3*cos(t)*cos(3*t);}
+
+
+{f=sin(t+pi);}
+
+{f=sin(t)+2*sin(2*t);}
+
+{f=sin(t+2*pi)+cos(t+pi);}
+
+
+f=cos(t)*cos(t)*cos(t)*cos(t)*cos(t)*cos(t)-1/32*(10+15*cos(2*t)+
+6*cos(4*t)+cos(6*t))+
+cos(t)*cos(t)*cos(t)*cos(t)*cos(t)*cos(t)-1/32*(10+15*cos(2*t)+
+6*cos(4*t)+cos(6*t))+
+cos(t)*cos(t)+sin(t)*sin(t);
+
+
+
+
+
+{ys1=sin(t);
+ys2=2*sin(2*t);}
+{ys5=sin(5*t);
+yc1=3*cos(t);
+yc3=cos(3*t);}
+{v1=ys1+ys2;}
+{v2=v1+ys5;
+v3=v2+yc1;
+v4=v3+yc3;}
+{f=0.33*cos(t)+ 2*cos(2*t)+0.8 *sin(t)+ 2.5*sin(2*t);}
+{f=5.385*cos(t+3.522);}  {uloha pro FFT}
+{f=4.2*cos(2*t)+8*sin(3*t);}
+{f=3*sin(t)-4*sin(t)*sin(t)*sin(t);}
+{f=2*sin(t)*cos(t);}
+{f1=cos(t);f2=sin(2*t);}
+
+a0'=k*f &0;
+
+{vysl=1/2*1+0*cos(t)-0.5*cos(2*t)+0*cos(3*t)+0*cos(4*t)+0*cos(5*t)
++0*sin(t)+0*sin(2*t)+0*sin(3*t)+0*sin(4*t)+0*sin(5*t);}
+
+
+
+   b1'=k*f*sin(om*t) &0;
+   a1'=k*f*cos(om*t) &0;
+   b2'=k*f*sin(2*om*t) &0;
+   a2'=k*f*cos(2*om*t) &0;
+   a3'=k*f*cos(3*om*t) &0;
+   b3'=k*f*sin(3*om*t) &0;
+   a4'=k*f*cos(4*om*t) &0;
+   b4'=k*f*sin(4*om*t) &0;
+   a5'=k*f*cos(5*om*t) &0;
+   b5'=k*f*sin(5*om*t) &0;
+   a6'=k*f*cos(6*om*t) &0;
+   b6'=k*f*sin(6*om*t) &0;
+
+{vysl=a0+b1+a1+b2+a2+b3+a3+b4+a4+b5+a5;}
+
+{f=sin(vomega*t) + m*sin(momega*t)*sin(vomega*t);}   {ampl.mod}
+{y=sin(9*t) +0.25*cos(8*t) -0.25*cos(10*t);}
+{f=sin((vomega+dom*sin(momega*t))*t);} {frekv.mod}
+{f=sin(vomega*t+dfi*sin(momega*t)); } {faz.mod}
+{x'=k*f*sin(100*t) &0;}
+sysend.
+
+
+
+

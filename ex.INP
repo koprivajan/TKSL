@@ -1,0 +1,15 @@
+var
+	x,y,z;
+const
+	a=1,
+	t0=0,
+	tmax=1,
+	dt=0.1,
+	eps=1e-20;
+	
+system
+X'=a*x	&1;
+Y'=-a*y &1;
+
+z=x*y;
+sysend.

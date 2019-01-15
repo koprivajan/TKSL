@@ -1,0 +1,12 @@
+var
+	y;
+const
+	t0=0,
+	tmax=1,
+	dt=1,
+	eps=1e-20;
+	
+system
+Y'=31*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t*t &0;
+
+sysend.
